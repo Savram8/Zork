@@ -1,11 +1,15 @@
 #This is the famous game of Zork written in python but with a little bit of my own added flair. 
+import sys
 
-print("ZORK I: The Great Underground Empire")
-print("Copyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.")
-print("ZORK is a registered trademark of Infocom, Inc.")
-print("Revision 88 / Serial number 840726")
-print("HOW TO PLAY: Enter your commands by the >>> prompt")
-print("Commands to use: walk + direction, Open, Pick up, Hit, Throw, Talk, inventory, take, look , walk")
+def intro_text():
+    print("ZORK I: The Great Underground Empire")
+    print("Copyright (c) 1981, 1982, 1983 Infocom, Inc. All rights reserved.")
+    print("ZORK is a registered trademark of Infocom, Inc.")
+    print("Revision 88 / Serial number 840726")
+    print("HOW TO PLAY: Enter your commands by the >>> prompt")
+    print("Commands to use: walk + direction, Open, Pick up, Hit, Throw, Talk, inventory, take, look , walk")   
+
+
 
 #11 Comamands to choose from.
 
@@ -19,13 +23,14 @@ print("West of House")
 print("You are standing in an open field west of a white house, with a boarded front door.")
 print("There is a small mailbox in front of you.")
 
-#Direction 1 = North
-#Direction 2 = West
-#Direction 3 = South 
-#Direction 4 = North
-#Direction 5 = North
+
 
 player = "yes"
+
+
+
+
+
 
 
 #Main Story Line
@@ -43,10 +48,10 @@ while player == "yes":
                 direction == 1
 
             elif choice.lower() == ("walk west"):
-                print("You walk up to the white house, the front door is boarded up.")
+                print("You walk up to the white house, the front door is locked. The door looks weak though, a swift kick would be able to open it.")
                 direction = 2
             
-            elif choice.lower() == "Walk east":
+            elif choice.lower() == "walk east":
                 print("You walk towards the ocean, you find a nice raft and a paddle.")
                 direction = 4
 
@@ -74,6 +79,10 @@ while player == "yes":
             elif choice.lower() == "inventory":
                 print (inventory)
 
+            else:
+                print("Commands to use: walk + direction, Open, Pick up, Hit, Throw, Talk, inventory, take, look , walk")
+
+
 
 
     # If you Walk West, The house
@@ -88,7 +97,9 @@ while player == "yes":
             elif choice2.lower() == "yes":
                 print("You squeeze through the opening. The room is dark and smells musty. You look around for a light. You flick on the light")
                 direction = 6
-                 
+
+            elif choice2.lower() == "look":
+                print("You look at the door, I'm pretty sure if you kicked it. You might be able to squeeze by.")
                 
             elif choice2.lower() == "no":
                  print("You turn around and walk back to the start of Zork. Kinda a bitch move...")
@@ -99,16 +110,15 @@ while player == "yes":
                 print("You put the key in your inventory. You see a silver door. Walk to the door maybe?")
                 inventory.append("Silver key")
 
-            elif choice2.lower() == "walk":
-                print("You walk towards the door, You take the key out of your inventory and you unlock the door. You are greeted with a open celler, with stairs leading you down. You go below and you are in a poorly light tunnel. Keep walking, Yes or no?")
-                inventory.remove("Silver key")
+            elif choice2.lower() == "talk":
+                print ("Talk to who? There is no one around? Are you okay?")
+
+
+            elif choice2.lower() == "inventory":
+                print(inventory)
             
-            elif choice2.lower() == "n":
-                    print("you get scared and climb back up. You hear a noise as you are running back. You run back to where you started. Now what.....pussy")
-                    direction = 5
-            elif choice2.lower() == "y":
-                     print("You walk down the tunnel, You hear a loud growling as approach the end of the hallway. When you reach the end, you find just a wall. When you turn around, you hear a Bang and a flash of light. You die instantly. You lose....")
-                     break   
+            else:
+                print("Commands to use: walk + direction, Open, Hit, Throw, Talk, inventory, take, look , walk")
 
 
 #Yes in the house, This leads to death.
@@ -118,17 +128,89 @@ while player == "yes":
             choice3 = input(">>> ")
 
             if  choice3.lower() == "look":
-                print("You look around and see old dining room. Cobwebs everywhere. You see a  Silver key in the middle of the table. The room is grey and looks old. Nothing much is here:")
+                print("You look around and see old dining room. Cobwebs everywhere. You see a Silver key in the middle of the table. The room is grey and looks old, a silver door shines behind the table. hmmm, that's intresting:")
+
+            elif choice3.lower() == "inventory":
+                print(inventory)
+            
+            elif choice3.lower() == "walk":
+                print("You walk across the room to the silver door. But it's locked... Maybe take the silver key on the table?")
 
             elif choice3.lower() == "take":
-                print("You put the key in your inventory. You see a silver door. Walk to the door maybe?")
+                print("You put the key in your inventory. You see a silver door. Walk to the door? yes or no")
                 inventory.append("Silver key")
+
+            elif choice3.lower() == "yes":
+                print("You walk towards the door, You take the key out of your inventory and you unlock the door. You are greeted with a open celler, with stairs leading you down. You go below and you are in a poorly light tunnel. At the end of the tunnel is a door. I have a weird feeling about this door...... Open? or Run? ")
+                inventory.remove("Silver key")
+
+            elif choice3.lower() == "open":
+                print("You open the door and a loud flash goes off. Dead. A masked figure stands there, shotgun in hand")
+                print("   ")
+                print("************************GAME OVER************************")
+                direction = 8 
+
                 
+            elif choice3.lower() == "run":
+                 print("Good choice, I have a weird vibe about that door. Lets return to the start!")
+                 print("**********************************************************************************")
+                 intro_text()
+
+                 direction == 5
+
+            elif choice3.lower() == "no":
+                    print("you get scared and climb back up. You hear a noise as you are running back. You run back to where you started. Now what.....")
+                    direction = 5
+
             elif choice3.lower() == "hit":
                 print("hit what?")
 
             elif choice3.lower() == "throw":
                 print("hit what?")
+
+            elif choice2.lower() == "inventory":
+                print(inventory)
+            else:
+                print("Commands to use: walk + direction, Open, Pick up, Hit, Throw, Talk, inventory, take, look , walk")
+
+
+
+    #If you end up going east
+    if direction == 4:
+        while direction == 4:
+            print(" ")
+            choice4 = input(">>> ")
+
+            if choice4 == "look":
+                print("Test")
+
+
+
+
+
+
+
+
+    #Ending
+    if direction == 8:
+        while direction == 8:
+            print(" ")
+            print("Do you want to play again? Yes or No")
+            choice8 = input(">>> ")
+
+
+            if choice8.lower() == "no" or "n":
+                print("Thanks for playing!")
+                sys.exit()
+            elif choice8.lower == "yes" or "y":
+                print("lets go!")
+                direction = 5
+            else:
+                print("Let me make this easy for you since you are having trouble understanding. Type yes, if you want to play again! Type No, if you don't want to play anymore. Simple!")
+
+            
+
+
 
             
             

@@ -17,6 +17,8 @@ def intro_text():
 direction = 5
 inventory = []
 
+intro_text()
+
 
 print("------------------------------------------------------------------------------------")
 print("West of House")
@@ -26,10 +28,6 @@ print("There is a small mailbox in front of you.")
 
 
 player = "yes"
-
-
-
-
 
 
 
@@ -181,8 +179,44 @@ while player == "yes":
             print(" ")
             choice4 = input(">>> ")
 
-            if choice4 == "look":
-                print("Test")
+            if choice4.lower() == "look":
+                print("you see a raft, do you want to get on it? Yes or no?")
+            
+            elif choice4.lower() == "hit":
+                print("why would you hit the raft? I don't understand")
+
+            elif choice4.lower() == "take":
+                print("Listen... I'm not sure how to break it to you, but that raft is fucking massive. I doubt we can carry that")
+            
+            elif choice4.lower() == "walk":
+                print("We can either get on the raft or go back. Do you want to get on the raft? Yes or no?")
+            elif choice4.lower() == "inventory":
+                print(inventory)
+            elif choice4.lower() == "throw":
+                print("throw what?")
+            elif choice4.lower() == "open":
+                print("what do you want to open?")
+            elif choice4.lower() == "talk":
+                print("uhhhh... Nobody is here... Are you ok?")
+            elif choice4.lower() == "yes":
+                print("You get on the raft and start to paddle away. You start to doze off and you fall asleep for a couple hours. Enter wake whenever you want to wake up")
+                print("Zzzzzz")
+                print("Zzzzzz")
+                print("Zzzzzz")
+            elif choice4.lower() == "no":
+                print("Thats fine, there is nothing else here. Lets return to the beginning, shall we?")
+                direction = 5
+            elif choice4.lower() == "wake":
+                print("You awake, it's dark and you are in the middle of the ocean. You feel something bumping the raft. You lean over the raft to try and catch a peek at whatever it is. As you lean over, a massive shark grabs you and pulls you under.")
+                print("********** GAME OVER *************")
+                print(" ")
+                direction = 8
+            else:
+                 print("Commands to use: walk + direction, Open, Pick up, Hit, Throw, Talk, inventory, take, look , walk")
+
+
+
+                
 
 
 
@@ -195,35 +229,35 @@ while player == "yes":
     if direction == 8:
         while direction == 8:
             print(" ")
-            print("Do you want to play again? Yes or No")
+            print("Do you want to play again? yes or No")
             choice8 = input(">>> ")
 
 
-            if choice8.lower() == "no" or "n":
+            if choice8.lower() == "yes":
+                print("Lets go!")
+                direction = 5
+            elif choice8.lower == "no":
                 print("Thanks for playing!")
                 sys.exit()
-            elif choice8.lower == "yes" or "y":
-                print("lets go!")
-                direction = 5
             else:
                 print("Let me make this easy for you since you are having trouble understanding. Type yes, if you want to play again! Type No, if you don't want to play anymore. Simple!")
 
-            
+                
 
 
 
-            
-            
+                
+                
+
+                    
+
+        
 
                 
 
-    
-
-            
 
 
-
-            
+                
             
 
 
